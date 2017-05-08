@@ -6,21 +6,8 @@ use libsmac::parser::grab_smaragdine_parser;
 
 fn main() {
     let mut data = r#"
-let x = 12
-let f(y) = x + y
-let b = true
-let b? = b
-let b!(val: bool) = b = val
-let c = 0x12345678
+0x12345678
 let d = 0b10101010
-let s  = r"everything's escaped here \n\t\r means nothing"
-let s? = "non-escaped \"string\" \n\tliteral"
-let char = '\n'
-let not_char = "a"
-let empty = ""
-let float = .42
-let f = 0.1337
-let g = true || false
     "#.chars();
 
     let lexer = grab_smaragdine_lexer(&mut data);
@@ -30,12 +17,8 @@ let g = true || false
     }
 
     let data2 = r#"
-r"hey"
-'9'
-123.2
-.212
-true
-false
+0x12345678
+0b10101010
     "#;
 
     let mut block_tree = block_tree::BlockTree::new(&data2, 0);
